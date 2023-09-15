@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <h1>url shortener</h1>
-    <form action="" method="POST" class="row g-3">
+    <form action="/shortUrls" method="POST" class="row g-3">
       <div class="col-auto">
         <label for="fullUrl" class="visually-hidden">url</label>
         <input required placeholder="url" type="url" name="fullUrl" id="fullUrl" class="form-control me-2">
@@ -18,6 +18,25 @@
         <button class="btn btn-warning mb-3" type="submit">shrink</button>
       </div>
     </form>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Full Url</th>
+          <th>Short Url</th>
+          <th>Clicks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shortUrls.forEach(shortUrl => { %>
+          <tr>
+            <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+            <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+            <td><%= shortUrl.clicks %></td>
+          </tr>
+        <% }) %>
+        
+      </tbody>
+    </table>
   </div>
     
 </body>
